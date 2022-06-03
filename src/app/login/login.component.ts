@@ -15,8 +15,8 @@ export class LoginComponent implements OnInit {
   onLogin(data) {
     this.authService.login(data)
       .subscribe(resp => {
-          console.log(resp);
-          console.log(resp.headers['authorization']);
+          let jwt= resp.headers.get("Authorization");
+          this.authService.saveToken(jwt);
       }, err => {
 
       });
